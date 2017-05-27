@@ -1,0 +1,18 @@
+1)select last_name, first_name,country.country from customer left join address using (address_id) join city using (City_id) join country using (country_id)  where country.country='CANADA'  order by first_name,last_name asc;
+
+2)select count(*) from customer join address using (address_id) join city using (city_id) join country using (country_id) where country='BRAZIL';
+
+
+
+3)select c1.country,count(c2.customer_id) from country c1,customer c2,city c3,address c4
+
+where c2.address_id= c4.address_id
+
+and c4.city_id=c3.city_id
+
+and c3.country_id = c1.country_id
+
+group by c1.country having count(c2.customer_id) > 20
+
+order by count(c2.customer_id) desc;
+
